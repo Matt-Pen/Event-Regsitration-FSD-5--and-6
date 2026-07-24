@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 const initialForm = {
   designation: "",
@@ -18,6 +19,16 @@ export default function RegisterForm() {
   const [form, setForm] = useState(initialForm);
   const [errors, setErrors] = useState({});
   const [registrations, setRegistrations] = useState([]);
+
+  useEffect(() => {
+  axios
+    .get("https://matt-pen.github.io/EventReg-API/Registrations.json")
+    .then((res) => {
+      const seeded = res.data.map((record) => ({ ...record, seeded: true }));
+      setRegistrations(seeded);
+    })
+    .catch((err) => console.error("Failed to load registrations:", err));
+}, []);
 
   const handleChange = (field) => (e) => {
     let value = e.target.value;
