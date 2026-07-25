@@ -8,9 +8,16 @@ export default function Login({ onLogin }) {
     e.preventDefault();
     if (!studentId.trim() || !password.trim()) {
       alert("Please enter both your Student ID and password.");
+      return;4
+    }
+    if(studentId.trim()=="stud" && password.trim() == "1234"){
+      onLogin();
+      return;
+    }else{
+      alert("StudentID or Password is Incorrect");
       return;
     }
-    onLogin();
+    
   };
 
   return (
