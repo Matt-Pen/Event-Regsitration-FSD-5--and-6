@@ -4,5 +4,5 @@ import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
   plugins: [react(), tailwindcss()],
-  base: '/eventhub-react/',
+  base: '/Event-Regsitration-FSD-5--and-6/',
 })
